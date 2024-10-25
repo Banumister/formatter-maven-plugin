@@ -1,11 +1,7 @@
 FROM ubuntu
-WORKDIR /app
 
-COPY requirements.txt /app
-COPY django_web_app /app
-
-RUN apt-get update && \
-    apt-get install -y python3 python3-pip && \
-    pip install -r requirements.txt && \
-    cd django_web_app
-
+RUN apt-get update && apt-get install wget -y
+RUN mkdir /usr/app
+WORKDIR /usr/app
+#RUN cd workspace
+COPY target/*.jar  /app/formatter-maven-plugin.jar
